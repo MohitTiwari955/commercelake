@@ -11,3 +11,4 @@
 | 7 | Hundreds of rows share one exact timestamp, e.g. 208 at 2020-03-27 16:30:01 | profile_kz_3.py | hypothesis: batch job |
 | 8 | Shifted rows occur in every month: about 20% of rows in Jan to Mar and June, only 4.5% in April | profile_kz_4.py | confirmed, cause unknown |
 | 9 | Five prices make up 56% of shifted rows (16.18 alone is 72,969 rows) | profile_kz_4.py | hypothesis: a few cheap products |
+| 10 | 95.0% of shifted rows sit in orders that also contain a normal row; 19,069 orders (5.0% of shifted rows) consist only of such items. Consistent with add-ons such as fees or services; the real nature is unknown. | profile_kz_6.py | supported, not proven |
