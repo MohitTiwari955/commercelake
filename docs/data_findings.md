@@ -12,6 +12,8 @@
 | 8 | Shifted rows occur in every month: about 20% of rows in Jan to Mar and June, only 4.5% in April | profile_kz_4.py | confirmed, cause unknown |
 | 9 | Five prices make up 56% of shifted rows (16.18 alone is 72,969 rows) | profile_kz_4.py | hypothesis: a few cheap products |
 | 10 | 95.0% of shifted rows sit in orders that also contain a normal row; 19,069 orders (5.0% of shifted rows) consist only of such items. Consistent with add-ons such as fees or services; the real nature is unknown. | profile_kz_6.py | supported, not proven |
+| 11 | Silver build on the full file: 2,633,521 Bronze rows become 2,633,521 Silver rows and 0 quarantine rows. Realigned rows 431,954, placeholder times 19,631 and exact repeats 675 all match profiling. | check_silver.py | confirmed |
+| 12 | After realignment, 3,842 rows have price 0 (profiling saw 121 before it). About 3,721 of them are realigned rows (calculated: 3,842 minus 121). | run_silver.py | confirmed total, split calculated |
 - Size: 298,649,047 bytes
 - SHA-256: 5ac5727e6830084806f051d2d09a72570367e2b2ee8d8f3ff9f8096ca72f07fe
 - Data rows: 2,633,521 (header excluded)
