@@ -38,3 +38,34 @@ def read_batches(path, batch_size=250_000):
                 first_row_number = row_number + 1
         if rows:
             yield first_row_number, rows
+            
+LINEAGE_COLUMNS = [
+    "_source_file", "_source_row_number", "_field_count",
+    "_ingested_at", "_batch_id", "_file_sha256",
+]
+
+
+def make_bronze_columns(first_row_number, rows, source_file, sha256, batch_id, ingested_at):
+    """Turn raw rows into columns: the 8 source columns plus lineage columns.
+
+    Nothing is cleaned or fixed. A line with too few fields gets None (null)
+    for the missing ones. A line with too many fields raises an error instead
+    of silently losing data.
+    """
+    width = len(SOURCE_COLUMNS)
+    data = {name: [] for name in SOURCE_COLUMNS + LINEAGE_COLUMNS}
+    for offset, row in enumerate(rows):
+        row_number = first_row_number + offset
+        if len(row) > width:
+            raise ValueError(
+                "Row %d has %d fields, expected at most %d" % (row_number, len(row), width)
+            )
+        for position, name in enumerate(SOURCE_COLUMNS):
+            data[name].append(row[position] if position < len(row) else None)
+        data["_source_file"].append(source_file)
+        data["_source_row_number"].append(row_number)
+        data["_field_count"].append(len(row))
+        data["_ingested_at"].append(ingested_at)
+        data["_batch_id"].append(batch_id)
+        data["_file_sha256"].append(sha256)
+    return data
