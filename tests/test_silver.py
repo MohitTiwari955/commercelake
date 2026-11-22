@@ -78,3 +78,8 @@ def test_every_bronze_row_ends_up_in_exactly_one_table():
             changed(FULL, 0, "2019-01-01 00:00:00 UTC"), changed(FULL, 1, "")]
     silver, quarantine = clean_bronze(bronze_from(rows))
     assert len(silver) + len(quarantine) == len(rows)
+    
+def test_exact_repeat_is_flagged_after_the_first_copy():
+    other = changed(FULL, 1, "101")
+    silver, quarantine = clean_bronze(bronze_from([FULL, FULL, other]))
+    assert list(silver["is_exact_repeat"]) == [False, True, False]

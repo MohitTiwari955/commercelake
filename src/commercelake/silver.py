@@ -81,4 +81,11 @@ def clean_bronze(bronze):
     bad = reason.notna()
     quarantine = bronze[bad].copy()
     quarantine["quarantine_reason"] = reason[bad]
-    return silver[~bad].reset_index(drop=True), quarantine.reset_index(drop=True)
+    silver = silver[~bad].reset_index(drop=True)
+    silver["is_exact_repeat"] = silver.duplicated(subset=BUSINESS_COLUMNS, keep="first")
+    return silver, quarantine.reset_index(drop=True)
+
+BUSINESS_COLUMNS = [
+    "event_time", "order_id", "product_id", "category_id",
+    "category_code", "brand", "price", "user_id",
+]
