@@ -1,8 +1,11 @@
 data/
 .venv/
+.venv-linux/
 .env
 __pycache__/
 *.pyc
 .pytest_cache/
 .ipynb_checkpoints/
 *.egg-info/
+spark-warehouse/
+metastore_db/
