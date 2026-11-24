@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pyarrow.parquet as pq
 
-silver_root = Path(r"data\silver\electronics_purchases")
+silver_root = Path(r"data/silver/electronics_purchases")
 load = sorted(silver_root.glob("sha256-*"))[0]
 summary = json.loads((load / "_summary.json").read_text(encoding="utf-8"))
 

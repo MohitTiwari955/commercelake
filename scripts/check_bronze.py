@@ -3,7 +3,7 @@ from pathlib import Path
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-folder = Path(r"data\bronze\electronics_purchases")
+folder = Path(r"data/bronze/electronics_purchases")
 wanted = ["_source_row_number", "_field_count", "_batch_id", "_file_sha256"]
 
 # Read only the four lineage columns we need, from every part file

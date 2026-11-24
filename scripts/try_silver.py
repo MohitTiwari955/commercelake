@@ -7,7 +7,7 @@ from commercelake.silver import clean_bronze
 pd.set_option("display.width", 200)
 pd.set_option("display.max_columns", 20)
 
-folder = Path(r"data\bronze\electronics_purchases")
+folder = Path(r"data/bronze/electronics_purchases")
 first_part = sorted(folder.glob("sha256-*/part-00000.parquet"))[0]
 bronze = pd.read_parquet(first_part)
 silver, quarantine = clean_bronze(bronze)

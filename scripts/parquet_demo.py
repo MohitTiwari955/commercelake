@@ -1,8 +1,8 @@
 import pandas as pd
 from pathlib import Path
 
-src = Path(r"data\raw\electronics\kz.csv")
-out_dir = Path(r"data\scratch")
+src = Path(r"data/raw/electronics/kz.csv")
+out_dir = Path(r"data/scratch")
 out_dir.mkdir(parents=True, exist_ok=True)
 
 # Read the first 200,000 rows, every column as text (no guessing)

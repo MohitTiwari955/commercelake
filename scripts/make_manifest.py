@@ -3,7 +3,7 @@ import hashlib
 from collections import Counter
 from pathlib import Path
 
-path = Path(r"data\raw\electronics\kz.csv")
+path = Path(r"data/raw/electronics/kz.csv")
 
 # 1. Fingerprint of the file (SHA-256): changes if even one byte changes
 sha = hashlib.sha256()

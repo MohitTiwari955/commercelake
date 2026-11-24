@@ -3,7 +3,7 @@ import hashlib
 import pandas as pd
 from pathlib import Path
 
-folder = Path(r"data\scratch")
+folder = Path(r"data/scratch")
 folder.mkdir(parents=True, exist_ok=True)
 tiny = folder / "tiny.csv"
 

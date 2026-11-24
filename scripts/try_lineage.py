@@ -3,7 +3,7 @@ from pathlib import Path
 
 from commercelake.bronze import make_bronze_columns, read_batches
 
-path = Path(r"data\raw\electronics\kz.csv")
+path = Path(r"data/raw/electronics/kz.csv")
 
 # Take only the first chunk of 5,000 rows
 first_row, rows = next(read_batches(path, batch_size=5000))

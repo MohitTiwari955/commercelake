@@ -1,6 +1,6 @@
 import pandas as pd
 
-path = r"data\raw\electronics\kz.csv"
+path = r"data/raw/electronics/kz.csv"
 id_cols = ["order_id", "product_id", "category_id", "user_id"]
 df = pd.read_csv(path, dtype={c: "string" for c in id_cols})
 

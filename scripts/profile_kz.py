@@ -3,7 +3,7 @@ import pandas as pd
 pd.set_option("display.width", 200)
 pd.set_option("display.max_columns", 20)
 
-path = r"data\raw\electronics\kz.csv"
+path = r"data/raw/electronics/kz.csv"
 df = pd.read_csv(path)
 
 print("Rows:", len(df))

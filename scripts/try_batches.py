@@ -3,7 +3,7 @@ from pathlib import Path
 
 from commercelake.bronze import read_batches
 
-path = Path(r"data\raw\electronics\kz.csv")
+path = Path(r"data/raw/electronics/kz.csv")
 
 total = 0
 field_counts = Counter()

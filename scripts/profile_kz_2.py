@@ -3,7 +3,7 @@ import pandas as pd
 pd.set_option("display.width", 200)
 pd.set_option("display.max_columns", 20)
 
-path = r"data\raw\electronics\kz.csv"
+path = r"data/raw/electronics/kz.csv"
 id_cols = ["order_id", "product_id", "category_id", "user_id"]
 df = pd.read_csv(path, dtype={c: "string" for c in id_cols})
 df["event_time"] = pd.to_datetime(df["event_time"], utc=True)
