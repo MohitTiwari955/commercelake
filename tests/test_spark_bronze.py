@@ -1,6 +1,5 @@
 """Tests for the Spark Bronze job, using tiny CSV files."""
 import pytest
-from pyspark.sql import SparkSession
 
 from commercelake.bronze import SOURCE_COLUMNS
 from commercelake.spark_bronze import build_bronze_spark
@@ -8,19 +7,6 @@ from commercelake.spark_bronze import build_bronze_spark
 HEADER = ",".join(SOURCE_COLUMNS)
 FULL = "2020-04-24 11:50:39 UTC,100,555,777,electronics.tablet,samsung,162.01,999"
 SHORT = "2020-05-02 11:12:20 UTC,101,556,,0.02,1515915625453675584"
-
-
-@pytest.fixture(scope="session")
-def spark():
-    session = (
-        SparkSession.builder.master("local[2]")
-        .appName("CommerceLakeTests")
-        .config("spark.sql.shuffle.partitions", "2")
-        .getOrCreate()
-    )
-    session.sparkContext.setLogLevel("ERROR")
-    yield session
-    session.stop()
 
 
 def make_csv(tmp_path, lines, header=HEADER):
